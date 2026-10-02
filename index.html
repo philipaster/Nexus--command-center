@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXUS // Command Center</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="scanline"></div>
+<header>
+  <div class="brand"><span class="dot"></span> NEXUS <small>COMMAND CENTER v1.0</small></div>
+  <div class="clock" id="clock">--:--:--</div>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <p class="eyebrow">SYSTEM ONLINE</p>
+    <h1>Welcome back, <span>Operator.</span></h1>
+    <p class="muted">Your personal Python-powered command center.</p>
+  </div>
+  <div class="status"><i></i> ALL SYSTEMS NOMINAL</div>
+</section>
+
+<section class="grid stats">
+  <div class="card stat"><span>TASKS</span><strong id="taskCount">0</strong><small>registered operations</small></div>
+  <div class="card stat"><span>COMPLETED</span><strong id="doneCount">0</strong><small>successful operations</small></div>
+  <div class="card stat"><span>NOTES</span><strong id="noteCount">0</strong><small>stored intelligence</small></div>
+  <div class="card stat"><span>UPTIME</span><strong id="uptime">0s</strong><small>current session</small></div>
+</section>
+
+<section class="grid main-grid">
+  <div class="card panel">
+    <div class="panel-head"><h2>MISSION QUEUE</h2><span class="tag">TASKS</span></div>
+    <div class="add-row">
+      <input id="taskInput" placeholder="Enter a mission..." maxlength="120">
+      <button onclick="addTask()">ADD</button>
+    </div>
+    <div id="tasks" class="list"></div>
+  </div>
+
+  <div class="card panel">
+    <div class="panel-head"><h2>INTELLIGENCE LOG</h2><span class="tag">NOTES</span></div>
+    <input id="noteTitle" placeholder="Note title">
+    <textarea id="noteBody" placeholder="Store an idea, command, project thought..."></textarea>
+    <button onclick="addNote()" class="wide">STORE INTELLIGENCE</button>
+    <div id="notes" class="notes"></div>
+  </div>
+</section>
+
+<section class="grid bottom-grid">
+  <div class="card panel">
+    <div class="panel-head"><h2>SECURITY LAB</h2><span class="tag">LOCAL</span></div>
+    <p class="muted">Generate a cryptographically secure random password.</p>
+    <div class="password-row"><input id="password" readonly placeholder="Generated password"><button onclick="genPassword()">GENERATE</button></div>
+    <button onclick="copyPassword()" class="wide ghost">COPY TO CLIPBOARD</button>
+  </div>
+
+  <div class="card panel">
+    <div class="panel-head"><h2>HOST TELEMETRY</h2><span class="tag">PYTHON</span></div>
+    <div class="telemetry">
+      <div><label>OS</label><b>{{ info.os }}</b></div>
+      <div><label>PYTHON</label><b>{{ info.python }}</b></div>
+      <div><label>MACHINE</label><b>{{ info.machine }}</b></div>
+      <div><label>HOST</label><b>{{ info.hostname }}</b></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>NEXUS // BUILT WITH PYTHON + FLASK + SQLITE <span>●</span></footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
